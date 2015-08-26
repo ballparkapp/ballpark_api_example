@@ -3,5 +3,9 @@ h2 API Example
 br
 - flash.each do |t, f|
   .alert.alert-info= f
-p
-  a.btn.btn-primary href="#{@auth_url}" Authorize
+form action="forward"
+  .form-group.form-inline 
+    .input-group
+      input.form-control type="text" name="subdomain" placeholder="subdomain"
+      .input-group-addon .ballparkapp.com
+  input.btn.btn-primary type="submit" value="Authorize"

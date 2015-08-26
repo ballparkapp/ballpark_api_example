@@ -2,8 +2,13 @@ class PagesController < ApplicationController
 
   
   def index
+    
+  end
+
+  def forward
     callback_url = ENV["BALLPARK_CALLBACK"]
-    @auth_url = oauth_client.auth_code.authorize_url(:redirect_uri => callback_url, :response_type => 'code')
+    oauth_client.site = "https://#{params[:subdomain]}.ballparkapp.com"
+    redirect_to oauth_client.auth_code.authorize_url(:redirect_uri => callback_url, :response_type => 'code')
   end
 
   def auth
