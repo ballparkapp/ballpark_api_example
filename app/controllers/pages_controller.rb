@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
   def forward
     callback_url = ENV["BALLPARK_CALLBACK"]
-    oauth_client.site = "https://#{params[:subdomain]}.ballparkapp.com"
+    session[:subdomain] = params[:subdomain]
     redirect_to oauth_client.auth_code.authorize_url(:redirect_uri => callback_url, :response_type => 'code')
   end
 

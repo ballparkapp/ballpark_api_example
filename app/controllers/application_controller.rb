@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   private
 
   def oauth_client
-    @oauth_client ||= OAuth2::Client.new(ENV["BALLPARK_APPID"], ENV["BALLPARK_SECRET"], site: ENV["BALLPARK_SITE"])
+    @oauth_client ||= OAuth2::Client.new(ENV["BALLPARK_APPID"], ENV["BALLPARK_SECRET"], site: "http://#{session[:subdomain]}.ballparkapp.com")
   end
 
   def access_token
